@@ -48,8 +48,10 @@ import dorm6 from "@/assets/real/dorm-6.jpg.asset.json";
 import dorm7 from "@/assets/real/dorm-7.jpg.asset.json";
 import dorm8 from "@/assets/real/dorm-8.jpg.asset.json";
 import dorm9 from "@/assets/real/dorm-9.jpg.asset.json";
+import dorm10 from "@/assets/real/dorm-10.jpg.asset.json";
+import srebrnaSzkola from "@/assets/real/srebrna-szkola.png.asset.json";
 
-const srebrneLiceumUrl = "/assets/srebrne-liceum.png";
+const srebrneLiceumUrl = srebrnaSzkola.url;
 
 const SOCIAL_LINKS = [
   { label: "Liceum", url: "https://www.instagram.com/kolegium_sw.stanislawakostki/", icon: Instagram },
