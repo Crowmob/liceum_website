@@ -48,8 +48,10 @@ import dorm6 from "@/assets/real/dorm-6.jpg.asset.json";
 import dorm7 from "@/assets/real/dorm-7.jpg.asset.json";
 import dorm8 from "@/assets/real/dorm-8.jpg.asset.json";
 import dorm9 from "@/assets/real/dorm-9.jpg.asset.json";
+import dorm10 from "@/assets/real/dorm-10.jpg.asset.json";
+import srebrnaSzkola from "@/assets/real/srebrna-szkola.png.asset.json";
 
-const srebrneLiceumUrl = "/assets/srebrne-liceum.png";
+const srebrneLiceumUrl = srebrnaSzkola.url;
 
 const SOCIAL_LINKS = [
   { label: "Liceum", url: "https://www.instagram.com/kolegium_sw.stanislawakostki/", icon: Instagram },
@@ -395,7 +397,7 @@ function HomePage() {
             <span className="text-sm text-muted-foreground">{t.dorm.gallerySubtitle}</span>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
-            {[dorm5, dorm6, dorm7, dorm8, dorm9].map((img, i) => (
+            {[dorm5, dorm6, dorm7, dorm8, dorm9, dorm10].map((img, i) => (
               <img key={i} src={img.url} alt="" className="reveal w-full aspect-square object-cover rounded-xl shadow hover:scale-[1.03] transition-transform" />
             ))}
           </div>
