@@ -395,7 +395,7 @@ function HomePage() {
             <span className="text-sm text-muted-foreground">{t.dorm.gallerySubtitle}</span>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
-            {[dorm5, dorm6, dorm7, dorm8, dorm9, dorm10].map((img, i) => (
+            {[dorm5, dorm6, dorm7, dorm8, dorm9].map((img, i) => (
               <img key={i} src={img.url} alt="" className="reveal w-full aspect-square object-cover rounded-xl shadow hover:scale-[1.03] transition-transform" />
             ))}
           </div>
