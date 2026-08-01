@@ -17,7 +17,22 @@ export const Route = createFileRoute("/archiwum")({
           "Przeglądaj archiwalne wpisy, wydarzenia i zdjęcia z historii Liceum Polonijnego w Warszawie.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "/archiwum" },
       { name: "twitter:card", content: "summary_large_image" },
+    ],
+    links: [{ rel: "canonical", href: "/archiwum" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Strona główna", item: "/" },
+            { "@type": "ListItem", position: 2, name: "Archiwum", item: "/archiwum" },
+          ],
+        }),
+      },
     ],
   }),
   component: ArchivePage,
