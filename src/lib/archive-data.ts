@@ -138,7 +138,7 @@ export const archiveItems: ArchiveItem[] = [
 {
     id: 7231,
     title: "Jeden dzień w szkole i w internacie",
-    excerpt: "Jak wygląda dzień w szkole i internacie Kolegium św. Stanisława Kostki? Zapraszamy do obejrzenia filmu przygotowanego przez Wiktorię. /__l5e/assets-v1/acd7dd4c-3dae-4b0c-a7c9-766b8e884cac/WhatsApp-Video-2024-03-22-at-13.09.29.mp4.",
+    excerpt: "Jak wygląda dzień w szkole i internacie Kolegium św. Stanisława Kostki? Zapraszamy do obejrzenia filmu przygotowanego przez Wiktorię. https://project--e73b3868-3cd9-4a45-865f-7c2b371d7a55-dev.lovable.app/__l5e/assets-v1/acd7dd4c-3dae-4b0c-a7c9-766b8e884cac/WhatsApp-Video-2024-03-22-at-13.09.29.mp4.",
     image: "/__l5e/assets-v1/2c330fda-10d3-4664-bee9-6b0b3f89298c/image-26-03-24-09-58-scaled.jpg",
     images: ["/__l5e/assets-v1/2c330fda-10d3-4664-bee9-6b0b3f89298c/image-26-03-24-09-58-scaled.jpg"],
     date: "2024-03-26",

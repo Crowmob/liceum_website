@@ -1,29 +1,63 @@
-# Welcome to your Lovable project
+# Liceum Polonijne w Warszawie
 
-This project was built with [Lovable](https://lovable.dev).
+Strona Liceum Polonijnego w Warszawie — **plain Vite + React 19 + TypeScript** single-page
+application. No SSR, no framework beyond Vite; routing is handled by React Router.
 
-## Build with Lovable
+## Stack
 
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
+- Vite 8
+- React 19 + TypeScript
+- React Router 7 (`/` and `/archiwum`)
+- Tailwind CSS 4 (`src/styles.css`, via `@tailwindcss/vite`)
+- shadcn/ui components (`src/components/ui`)
+- TanStack Query (data/cache utility only — no router involvement)
 
 ## Development
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
-
 ```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
+npm install
+npm run dev      # http://localhost:8080
+npm run build    # typecheck + production build into dist/
+npm run preview  # serve the production build
+npm run lint
 ```
 
-## Built with
+## Project layout
 
-- TanStack Start
-- TypeScript
-- React
-- Tailwind CSS
+```
+index.html                 app shell + static SEO defaults
+public/                    favicons, robots.txt, sitemap.xml, images & documents
+  __l5e/assets-v1/...      archive photos (self-hosted, ~110 MB)
+  assets/docs/...          recruitment PDFs / DOCX files
+src/main.tsx               React entry point
+src/App.tsx                React Router routes + per-route SEO
+src/components/Seo.tsx     document-head manager (title, meta, canonical, JSON-LD)
+src/features/HomePage.tsx  main page
+src/features/ArchivePage.tsx  archive page
+src/lib/archive-data.ts    archive content (titles, dates, image paths)
+src/lib/docs.ts            recruitment document links
+src/lib/site-i18n.ts       PL/EN/UK/RU translations
+src/styles.css             design tokens + Tailwind setup
+```
+
+## Deployment
+
+The build output in `dist/` is fully static. Because routing is client-side, the host must
+serve `index.html` for unknown paths:
+
+- Netlify: `public/_redirects` (included)
+- Vercel: `vercel.json` (included)
+- Nginx: `try_files $uri /index.html;`
+- GitHub Pages: copy `dist/index.html` to `dist/404.html`
+
+Set the public site URL for canonical/OG tags and the sitemap with an env variable:
+
+```sh
+VITE_SITE_URL=https://liceumpolonijne.edu.pl npm run build
+```
+
+## Media hosting
+
+All archive images and recruitment documents are committed under `public/`, so the site does
+not depend on any external host. Two large videos exceed the repository file-size limit and
+are still loaded from a remote URL — see `MIGRATION.md`.
