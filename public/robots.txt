@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://liceumpolonijne.edu.pl/sitemap.xml
