@@ -55,7 +55,7 @@ already framework-agnostic React/TypeScript and were kept as-is. In-page navigat
 
 ## Media
 
-- 862 archive/home images were downloaded into `public/__l5e/assets-v1/<id>/<file>` — the exact
+- 862 archive/home images were downloaded into `public/media/<id>/<file>` — the exact
   paths already referenced by `src/lib/archive-data.ts` and the `*.asset.json` pointers, so no
   code changes were required.
 - 26 recruitment documents were downloaded into `public/assets/docs/` (these were previously
