@@ -55,17 +55,17 @@ already framework-agnostic React/TypeScript and were kept as-is. In-page navigat
 
 ## Media
 
-- 862 archive/home images were downloaded into `public/media/<id>/<file>` — the exact
-  paths already referenced by `src/lib/archive-data.ts` and the `*.asset.json` pointers, so no
-  code changes were required.
-- 26 recruitment documents were downloaded into `public/assets/docs/` (these were previously
-  broken links to another host).
-- Two videos exceed the 10 MB per-file repository limit and are therefore **not** committed.
-  They are referenced by absolute URL
-  (`https://project--e73b3868-3cd9-4a45-865f-7c2b371d7a55-dev.lovable.app/__l5e/...`) in
-  `src/assets/real/fundacja-1-5-procent.mp4.asset.json` and in one archive excerpt. To fully
-  cut the last external dependency, upload the two MP4s to your own hosting (or add them via
-  Git LFS) and replace those URLs.
+- 862 archive/home images live in `public/media/<id>/<file>`. All file names are ASCII-only and
+  the folder is a plain `media/` path (no leading underscores), so every static host — Vercel
+  included — serves them without encoding or reserved-path issues.
+- 26 recruitment documents live in `public/assets/docs/`.
+- The 1,5% video is self-hosted at `public/media/video/fundacja-1-5-procent.mp4`
+  (re-encoded H.264, 816×464, ~8.9 MB so it fits the repo file-size limit).
+- One archive excerpt used to link a WhatsApp video that no longer exists upstream (404); the
+  dead URL was removed from the text.
+- `vercel.json` rewrites only extension-less paths to `index.html`, so asset requests are never
+  swallowed by the SPA fallback.
+
 
 ## Consequences
 
