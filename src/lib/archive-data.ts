@@ -10,6 +10,21 @@ export type ArchiveItem = {
 
 export const archiveItems: ArchiveItem[] = [
 {
+    id: 7530,
+    title: "Klasa 2B na wycieczce po Warszawie",
+    excerpt:
+      "Klasa 2B spędziła wspaniały dzień, poznając Warszawę. Odwiedziliśmy Bibliotekę Uniwersytecką, która zachwyciła nas architekturą i zielenią, a następnie spacerowaliśmy uliczkami miasta i zobaczyliśmy kościół, w którym spoczywa serce Fryderyka Chopina. Dzień zakończyliśmy spacerem po malowniczych bulwarach wiślanych.",
+    image: "/media/2b-warszawa-2026-09/wycieczka-2b-1.jpg",
+    images: [
+      "/media/2b-warszawa-2026-09/wycieczka-2b-1.jpg",
+      "/media/2b-warszawa-2026-09/wycieczka-2b-2.jpg",
+      "/media/2b-warszawa-2026-09/wycieczka-2b-3.jpg",
+      "/media/2b-warszawa-2026-09/wycieczka-2b-4.jpg",
+    ],
+    date: "2026-09-01",
+    category: "Z życia szkoły",
+  },
+{
     id: 7522,
     title: "Rozpoczynamy rekrutację na rok szkolny 2026/2027",
     excerpt: "Rozpoczynamy rekrutację na rok szkolny 2026/2027. Już dzisiaj zapewnij sobie miejsce wśród uczniów Kolegium św. Stanisława Kostki. Więcej informacji w zakładce „Rekrutacja” na górze strony.",
