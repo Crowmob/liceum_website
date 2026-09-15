@@ -19,4 +19,4 @@
 - [x] Correct profile abbreviations and expand descriptions
 - [x] Move language choices into Rozszerzenia
 - [x] Redesign achievements with coherent, uncropped media
-- [ ] Verify desktop and mobile presentation
+- [x] Verify desktop and mobile presentation
