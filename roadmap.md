@@ -1,12 +1,12 @@
 # Homepage redesign roadmap
 
-- [ ] Rework navigation and hero around the liceum
-- [ ] Reorder homepage into a school-first journey
-- [ ] Add extended-subject profiles
-- [ ] Add 59% vs 79% matura comparison
-- [ ] Add filterable language achievements
-- [ ] Add editable placeholder teacher cards
-- [ ] Add student-life section
-- [ ] Collapse recruitment documents by default
-- [ ] Add featured internat gallery with navigable lightbox
-- [ ] Verify desktop/mobile interactions, links, images, console, and build
+- [x] Rework navigation and hero around the liceum
+- [x] Reorder homepage into a school-first journey
+- [x] Add extended-subject profiles
+- [x] Add 59% vs 79% matura comparison
+- [x] Add filterable language achievements
+- [x] Add editable placeholder teacher cards
+- [x] Add student-life section
+- [x] Collapse recruitment documents by default
+- [x] Add featured internat gallery with navigable lightbox
+- [x] Verify desktop/mobile interactions, links, images, console, and build
