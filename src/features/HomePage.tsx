@@ -25,6 +25,7 @@ import {
   Menu,
   Phone,
   ShieldCheck,
+  Trophy,
   Utensils,
   Wifi,
   X,
