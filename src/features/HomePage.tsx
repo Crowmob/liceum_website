@@ -40,7 +40,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { achievements, educationProfiles, pageCopy, teachers, type AchievementLanguage } from "@/features/homepage-content";
+import { achievements, educationProfiles, pageCopy } from "@/features/homepage-content";
 import { zasadyDoc, loDocs, internatDocs, type DocItem } from "@/lib/docs";
 import { translations, languageOptions, type Lang } from "@/lib/site-i18n";
 
@@ -144,9 +144,7 @@ function HomePage() {
     { id: "o-szkole", label: t.nav.about },
     { id: "oferta", label: t.nav.offer },
     { id: "rozszerzenia", label: copy.nav.profiles },
-    { id: "matura", label: copy.nav.matura },
     { id: "osiagniecia", label: copy.nav.achievements },
-    { id: "kadra", label: copy.nav.staff },
     { id: "rekrutacja", label: t.nav.recruitment },
     { id: "internat", label: t.nav.dorm },
     { id: "kontakt", label: t.nav.contact },
@@ -193,7 +191,7 @@ function HomePage() {
       </header>
 
       <main>
-        <section id="top" className="relative flex h-[82svh] min-h-[680px] max-h-[880px] items-center overflow-hidden pt-20">
+        <section id="top" className="relative flex h-[92svh] min-h-[760px] max-h-[1020px] items-center overflow-hidden pt-20">
           <img src={heroImg.url} alt="Uczniowie Liceum Polonijnego w Warszawie" className="absolute inset-0 h-full w-full object-cover object-center kenburns" />
           <div className="absolute inset-0 bg-primary/65" />
           <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-primary/80 to-transparent" />
@@ -227,7 +225,7 @@ function HomePage() {
                 <p className="reveal">{t.about.p1}</p><p className="reveal">{t.about.p2}</p><p className="reveal">{t.about.p4}</p>
               </div>
               <div className="reveal mt-9 grid grid-cols-2 gap-4 border-t border-border pt-8">
-                <div><div className="font-display text-4xl text-primary">79%</div><div className="mt-1 text-sm text-muted-foreground">średni wynik matury</div></div>
+                 <div><div className="font-display text-4xl text-primary">79%</div><div className="mt-1 text-sm text-muted-foreground">średni wynik matury z języka polskiego</div></div>
                 <div><div className="font-display text-4xl text-primary">{t.about.statCountriesValue}</div><div className="mt-1 text-sm text-muted-foreground">{t.about.statCountriesLabel}</div></div>
               </div>
             </div>
@@ -237,45 +235,30 @@ function HomePage() {
         <section id="oferta" className="scroll-mt-24 bg-secondary/55 py-20 md:py-28">
           <div className="container-x">
             <SectionHeading centered eyebrow={t.offer.eyebrow} title={t.offer.title} />
-            <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+             <div className="mx-auto mt-12 grid max-w-6xl gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {[t.offer.items[0], t.offer.items[1], t.offer.items[3], t.offer.items[4], t.offer.items[5]].map((item, index) => {
                 const Icon = [GraduationCap, Languages, HeartHandshake, ShieldCheck, Trophy][index] ?? GraduationCap;
                 return <article key={item.title} className="reveal group rounded-lg border border-border bg-card p-7 transition-all hover:border-accent/60 hover:shadow-lg"><div className="mb-5 flex h-12 w-12 items-center justify-center rounded-md bg-primary text-primary-foreground transition-colors group-hover:bg-accent group-hover:text-accent-foreground"><Icon className="h-6 w-6" /></div><h3 className="font-display text-2xl text-primary">{item.title}</h3><p className="mt-2 leading-relaxed text-muted-foreground">{item.desc}</p></article>;
               })}
-            </div>
+             </div>
+             <div className="reveal mx-auto mt-8 max-w-3xl border-t border-border pt-7 text-center">
+               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-accent">Języki obce do wyboru</p>
+               <p className="mt-3 font-display text-2xl text-primary">Angielski · Rosyjski · Niemiecki</p>
+             </div>
           </div>
         </section>
 
         <section id="rozszerzenia" className="container-x scroll-mt-24 py-20 md:py-28">
           <SectionHeading centered eyebrow={copy.profiles.eyebrow} title={copy.profiles.title} lead={copy.profiles.lead} />
-          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+           <div className="mx-auto mt-12 max-w-4xl overflow-hidden rounded-lg border border-border bg-card">
             {educationProfiles.map((profile) => {
               const Icon = PROFILE_ICONS[profile.icon];
-               return <article key={profile.code} className="reveal flex min-h-44 items-start gap-5 rounded-lg border border-border bg-card p-6 transition-all hover:border-accent/60 hover:shadow-lg"><div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md bg-secondary text-primary"><Icon className="h-5 w-5" /></div><div><p className="text-xs font-bold tracking-[0.2em] text-accent">{profile.code}</p><h3 className="mt-2 font-display text-xl leading-snug text-primary">{profile.subjects}</h3><p className="mt-2 text-sm leading-relaxed text-muted-foreground">{profile.description}</p></div></article>;
+                return <ProfileRow key={profile.code} profile={profile} icon={Icon} />;
             })}
           </div>
         </section>
 
-        <section id="matura" className="scroll-mt-24 bg-primary py-20 text-primary-foreground md:py-28">
-          <div className="container-x grid items-center gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
-            <div><SectionHeading inverse eyebrow={copy.matura.eyebrow} title={copy.matura.title} lead={copy.matura.lead} /></div>
-            <div className="reveal space-y-6 rounded-lg border border-primary-foreground/20 bg-primary-foreground/5 p-6 sm:p-9">
-              <ResultBar label={copy.matura.poland} value={59} />
-              <ResultBar label={copy.matura.school} value={79} featured />
-              <p className="border-t border-primary-foreground/20 pt-5 text-sm text-primary-foreground/75">Wyniki, które pokazują skuteczność naszej edukacji.</p>
-            </div>
-          </div>
-        </section>
-
         <AchievementsSection copy={copy} />
-        <StaffSection copy={copy} />
-
-        <section id="zycie-szkoly" className="scroll-mt-24 bg-secondary/55 py-20 md:py-28">
-          <div className="container-x grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
-            <div className="reveal grid grid-cols-2 gap-3"><img src={matura.url} alt="Uczniowie podczas wydarzenia szkolnego" loading="lazy" className="aspect-[4/5] w-full rounded-lg object-cover" /><img src={certificate.url} alt="Wyróżnienia szkolne" loading="lazy" className="mt-8 aspect-[4/5] w-full rounded-lg object-cover" /></div>
-            <div><SectionHeading eyebrow={copy.life.eyebrow} title={copy.life.title} lead={copy.life.lead} /><Button asChild variant="outline" className="reveal mt-7 rounded-full"><a href="/archiwum">{copy.life.cta}<ArrowRight /></a></Button></div>
-          </div>
-        </section>
 
         <section id="rekrutacja" className="container-x scroll-mt-24 py-20 md:py-28">
           <SectionHeading centered eyebrow={t.rec.eyebrow} title="Dołącz do naszego liceum" lead={t.rec.lead} />
@@ -294,7 +277,7 @@ function HomePage() {
 
         <section className="border-y border-border py-16">
           <div className="container-x grid items-stretch gap-5 md:grid-cols-2">
-            <article className="reveal flex flex-col rounded-lg border border-border bg-card p-6 text-center"><div className="flex aspect-video items-center justify-center overflow-hidden rounded-md bg-secondary"><img src={srebrnaSzkola.url} alt="Srebrna Szkoła 2026" loading="lazy" className="max-h-[84%] max-w-[84%] object-contain" /></div><h3 className="mt-5 font-display text-xl text-primary">Fundacja „Dla Polonii”</h3><p className="mt-2 text-sm leading-relaxed text-muted-foreground">Fundacja prowadzi egzaminy certyfikatowe z języka polskiego na poziomie B1 i B2.</p><a href="https://www.fundacjadlapolonii.pl" target="_blank" rel="noopener noreferrer" className="mt-auto inline-flex items-center justify-center gap-2 pt-5 text-sm font-semibold text-accent hover:underline">Strona Fundacji<ArrowRight className="h-4 w-4" /></a></article>
+             <article className="reveal flex flex-col items-center justify-center rounded-lg border border-border bg-card p-8 text-center"><h3 className="font-display text-2xl text-primary">Fundacja „Dla Polonii”</h3><p className="mt-3 max-w-md text-sm leading-relaxed text-muted-foreground">Fundacja prowadzi egzaminy certyfikatowe z języka polskiego na poziomie B1 i B2.</p><a href="https://www.fundacjadlapolonii.pl" target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex items-center justify-center gap-2 text-sm font-semibold text-accent hover:underline">Strona Fundacji<ArrowRight className="h-4 w-4" /></a></article>
             <article className="reveal flex flex-col rounded-lg border border-border bg-card p-6 text-center"><div className="relative aspect-video overflow-hidden rounded-md bg-primary"><video src={donationVideo.url} className="absolute inset-0 h-full w-full object-contain" controls playsInline preload="metadata" /></div><h3 className="mt-5 font-display text-xl text-primary">Twoje 1,5% — mój powrót do Polski</h3><p className="mt-2 text-sm leading-relaxed text-muted-foreground">Przekaż 1,5% podatku uczniom Kolegium. Fundacja „Dla Polonii”, KRS: <span className="font-semibold text-primary">0000423252</span>.</p><a href="https://www.fundacjadlapolonii.pl" target="_blank" rel="noopener noreferrer" className="mt-auto inline-flex items-center justify-center gap-2 pt-5 text-sm font-semibold text-accent hover:underline">Strona Fundacji<ArrowRight className="h-4 w-4" /></a></article>
           </div>
         </section>
@@ -317,18 +300,13 @@ function SectionHeading({ eyebrow, title, lead, centered = false, inverse = fals
   return <div className={`${centered ? "mx-auto max-w-3xl text-center" : "max-w-3xl"}`}><p className="reveal mb-4 text-xs font-semibold uppercase tracking-[0.25em] text-accent">{eyebrow}</p><h2 className={`reveal font-display text-4xl leading-tight md:text-5xl ${inverse ? "text-primary-foreground" : "text-primary"}`}>{title}</h2>{lead && <p className={`reveal mt-5 text-lg leading-relaxed ${inverse ? "text-primary-foreground/75" : "text-muted-foreground"}`}>{lead}</p>}</div>;
 }
 
-function ResultBar({ label, value, featured = false }: { label: string; value: number; featured?: boolean }) {
-  return <div><div className="mb-3 flex items-end justify-between gap-4"><span className={`text-sm font-medium ${featured ? "text-primary-foreground" : "text-primary-foreground/70"}`}>{label}</span><strong className={`font-display ${featured ? "text-5xl text-accent" : "text-3xl text-primary-foreground"}`}>{value}%</strong></div><div className="h-3 overflow-hidden rounded-full bg-primary-foreground/15"><div className={`h-full rounded-full ${featured ? "bg-accent" : "bg-primary-foreground/55"}`} style={{ width: `${value}%` }} /></div></div>;
-}
-
 function AchievementsSection({ copy }: { copy: (typeof pageCopy)[Lang] }) {
-  const [filter, setFilter] = useState<AchievementLanguage>("all");
-  const filtered = filter === "all" ? achievements : achievements.filter((item) => item.language === filter);
-  return <section id="osiagniecia" className="container-x scroll-mt-24 py-20 md:py-28"><SectionHeading centered eyebrow={copy.achievements.eyebrow} title={copy.achievements.title} lead={copy.achievements.lead} /><div className="mt-9 flex gap-2 overflow-x-auto pb-2 sm:justify-center" role="tablist" aria-label="Filtr osiągnięć według języka">{(Object.keys(copy.achievements.filters) as AchievementLanguage[]).map((key) => <Button key={key} variant={filter === key ? "default" : "outline"} className={`shrink-0 rounded-full ${filter === key ? "bg-primary text-primary-foreground" : ""}`} onClick={() => setFilter(key)} role="tab" aria-selected={filter === key}>{copy.achievements.filters[key]}</Button>)}</div>{filtered.length > 0 ? <div className="mt-10 grid gap-5 md:grid-cols-3">{filtered.map((item, index) => <article key={item.title} className="reveal rounded-lg border border-border bg-card p-7"><div className="mb-5 flex h-11 w-11 items-center justify-center rounded-md bg-secondary text-accent">{index === 0 ? <Trophy /> : <ShieldCheck />}</div><h3 className="font-display text-2xl text-primary">{item.title}</h3><p className="mt-3 leading-relaxed text-muted-foreground">{item.description}</p></article>)}</div> : <div className="mt-10 rounded-lg border border-dashed border-border bg-secondary/40 p-10 text-center text-muted-foreground">{copy.achievements.empty}</div>}</section>;
+  return <section id="osiagniecia" className="scroll-mt-24 bg-secondary/55 py-20 md:py-28"><div className="container-x"><SectionHeading centered eyebrow={copy.achievements.eyebrow} title={copy.achievements.title} lead={copy.achievements.lead} /><div className="mx-auto mt-12 grid max-w-6xl gap-5 lg:grid-cols-2"><article className="reveal flex flex-col items-center rounded-lg border border-border bg-card p-7 text-center sm:flex-row sm:text-left"><img src={srebrnaSzkola.url} alt="Odznaka Srebrna Szkoła 2026 rankingu Perspektywy" loading="lazy" className="h-48 w-48 shrink-0 object-contain" /><div className="sm:pl-7"><h3 className="font-display text-3xl text-primary">{achievements[0]?.title}</h3><p className="mt-3 leading-relaxed text-muted-foreground">{achievements[0]?.description}</p><p className="mt-4 font-semibold text-accent">79% — średni wynik matury z języka polskiego</p></div></article><article className="reveal flex flex-col justify-center rounded-lg border border-border bg-card p-7 text-center"><h3 className="font-display text-3xl text-primary">{achievements[1]?.title}</h3><p className="mx-auto mt-3 max-w-md leading-relaxed text-muted-foreground">{achievements[1]?.description}</p></article></div><div className="mx-auto mt-5 grid max-w-6xl gap-5 lg:grid-cols-2"><figure className="reveal flex min-h-80 items-center justify-center overflow-hidden rounded-lg border border-border bg-card p-3"><img src={matura.url} alt="Absolwentka z wynikiem egzaminu maturalnego" loading="lazy" className="h-auto max-h-[460px] w-full object-contain" /></figure><figure className="reveal flex min-h-80 items-center justify-center overflow-hidden rounded-lg border border-border bg-card p-3"><img src={certificate.url} alt="Certyfikat Aktywni w bezpieczeństwie" loading="lazy" className="h-auto max-h-[460px] w-full object-contain" /></figure></div><div className="mx-auto mt-5 max-w-6xl rounded-lg border border-border bg-card p-7 text-center"><h3 className="font-display text-2xl text-primary">{achievements[2]?.title}</h3><p className="mt-3 text-muted-foreground">{achievements[2]?.description}</p><Button asChild variant="outline" className="mt-6 rounded-full"><a href="/archiwum">Zobacz osiągnięcia w szkolnym kalendarzu<ArrowRight /></a></Button></div></div></section>;
 }
 
-function StaffSection({ copy }: { copy: (typeof pageCopy)[Lang] }) {
-  return <section id="kadra" className="scroll-mt-24 bg-primary py-20 text-primary-foreground md:py-28"><div className="container-x"><div className="flex flex-col justify-between gap-5 lg:flex-row lg:items-end"><SectionHeading inverse eyebrow={copy.staff.eyebrow} title={copy.staff.title} lead={copy.staff.lead} /><span className="w-fit rounded-full border border-primary-foreground/20 px-4 py-2 text-xs text-primary-foreground/65">{copy.staff.placeholder}</span></div><div className="mt-11 flex snap-x gap-4 overflow-x-auto pb-4 md:grid md:grid-cols-2 md:overflow-visible lg:grid-cols-5">{teachers.map((teacher) => { const initials = teacher.name.split(" ").map((part) => part[0]).join(""); return <article key={teacher.name} className="reveal min-w-[235px] snap-start rounded-lg border border-primary-foreground/15 bg-primary-foreground/5 p-5 md:min-w-0"><div className="mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-accent font-display text-xl text-accent-foreground">{initials}</div><h3 className="font-display text-xl text-primary-foreground">{teacher.name}</h3><p className="mt-1 text-sm font-medium text-primary-foreground/70">{teacher.role}</p><p className="mt-3 text-sm leading-relaxed text-primary-foreground/60">{teacher.description}</p></article>; })}</div></div></section>;
+function ProfileRow({ profile, icon: Icon }: { profile: (typeof educationProfiles)[number]; icon: typeof Code2 }) {
+  const [open, setOpen] = useState(false);
+  return <Collapsible open={open} onOpenChange={setOpen} className="reveal border-b border-border last:border-b-0"><CollapsibleTrigger asChild><Button variant="ghost" className="h-auto w-full justify-start rounded-none px-5 py-5 text-left hover:bg-secondary sm:px-7"><span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md bg-secondary text-primary"><Icon className="h-5 w-5" /></span><span className="min-w-0 flex-1"><span className="block text-xs font-bold tracking-[0.2em] text-accent">{profile.code}</span><span className="mt-1 block whitespace-normal font-display text-xl text-primary">{profile.subjects}</span></span><ChevronDown className={`shrink-0 text-muted-foreground transition-transform ${open ? "rotate-180" : ""}`} /></Button></CollapsibleTrigger><CollapsibleContent><p className="px-7 pb-6 pl-[5.75rem] leading-relaxed text-muted-foreground">{profile.description}</p></CollapsibleContent></Collapsible>;
 }
 
 function InternatSection({ t, copy }: { t: (typeof translations)[Lang]; copy: (typeof pageCopy)[Lang] }) {
