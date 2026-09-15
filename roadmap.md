@@ -13,10 +13,10 @@
 
 ## Current refinements
 
-- [ ] Move the Fundacja card beside Stypendia i sukcesy
-- [ ] Add a visible poster frame to the 1.5% video
-- [ ] Center all cards and framed content
-- [ ] Correct profile abbreviations and expand descriptions
-- [ ] Move language choices into Rozszerzenia
-- [ ] Redesign achievements with coherent, uncropped media
+- [x] Move the Fundacja card beside Stypendia i sukcesy
+- [x] Add a visible poster frame to the 1.5% video
+- [x] Center all cards and framed content
+- [x] Correct profile abbreviations and expand descriptions
+- [x] Move language choices into Rozszerzenia
+- [x] Redesign achievements with coherent, uncropped media
 - [ ] Verify desktop and mobile presentation
