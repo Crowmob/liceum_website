@@ -200,3 +200,9 @@
 }
 @utility kenburns { animation: kenburns 24s ease-in-out infinite alternate; }
 
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .kenburns, .float-slow { animation: none; }
+}
+
