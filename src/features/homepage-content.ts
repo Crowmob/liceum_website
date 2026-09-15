@@ -3,12 +3,12 @@ import type { Lang } from "@/lib/site-i18n";
 export type AchievementLanguage = "all" | "en" | "ru" | "de";
 
 export const educationProfiles = [
-  { code: "INF-MAT", subjects: "Informatyka + Matematyka", description: "Dla przyszłych programistów, analityków i twórców technologii.", icon: "code" },
-  { code: "GEO-MAT", subjects: "Geografia + Matematyka", description: "Dobry start w kierunku ekonomii, logistyki i biznesu.", icon: "globe" },
-  { code: "HIS-WOS", subjects: "Historia + Wiedza o społeczeństwie", description: "Dla zainteresowanych prawem, polityką i życiem społecznym.", icon: "landmark" },
-  { code: "CHIM-BIO", subjects: "Chemia + Biologia", description: "Przygotowanie do nauk medycznych i przyrodniczych.", icon: "flask" },
-  { code: "GEO-RUS", subjects: "Geografia + Język rosyjski", description: "Połączenie wiedzy o świecie z praktyczną nauką języka.", icon: "languages" },
-  { code: "FIZ-MAT", subjects: "Fizyka + Matematyka", description: "Solidna podstawa dla studiów technicznych i ścisłych.", icon: "atom" },
+  { code: "MAT–INF", subjects: "Matematyka + Informatyka", description: "Profil dla przyszłych programistów, analityków danych i twórców nowych technologii. Rozwija logiczne myślenie, umiejętność rozwiązywania problemów oraz praktyczne kompetencje cyfrowe potrzebne na studiach technicznych.", icon: "code" },
+  { code: "MAT–GEO", subjects: "Matematyka + Geografia", description: "Dobry wybór dla osób zainteresowanych ekonomią, finansami, logistyką, gospodarką przestrzenną lub turystyką. Łączy analizę danych z rozumieniem procesów społecznych, ekonomicznych i środowiskowych.", icon: "globe" },
+  { code: "HIS–WOS", subjects: "Historia + Wiedza o społeczeństwie", description: "Kierunek dla uczniów zainteresowanych prawem, polityką, dyplomacją, mediami i życiem społecznym. Uczy interpretowania źródeł, świadomego argumentowania oraz rozumienia współczesnego świata.", icon: "landmark" },
+  { code: "BIOL–CHEM", subjects: "Biologia + Chemia", description: "Przygotowuje do dalszej nauki na kierunkach medycznych, biologicznych, chemicznych i przyrodniczych. Duży nacisk kładzie na analizę zjawisk, pracę z materiałem badawczym i systematyczne przygotowanie do matury.", icon: "flask" },
+  { code: "GEO–J. ROS.", subjects: "Geografia + Język rosyjski", description: "Łączy wiedzę o świecie z praktycznym rozwijaniem kompetencji językowych i międzykulturowych. To dobre przygotowanie do studiów związanych z biznesem międzynarodowym, turystyką, logistyką i stosunkami międzynarodowymi.", icon: "languages" },
+  { code: "MAT–FIZ", subjects: "Matematyka + Fizyka", description: "Solidna podstawa dla kandydatów na studia inżynierskie, techniczne, informatyczne i ścisłe. Profil rozwija myślenie analityczne, modelowanie zjawisk oraz sprawne stosowanie matematyki w praktyce.", icon: "atom" },
 ] as const;
 
 // Prototype data: replace these records when the school provides the final staff list.
