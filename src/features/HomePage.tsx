@@ -241,12 +241,16 @@ function HomePage() {
                 return <article key={item.title} className="reveal group rounded-lg border border-border bg-card p-7 transition-all hover:border-accent/60 hover:shadow-lg"><div className="mb-5 flex h-12 w-12 items-center justify-center rounded-md bg-primary text-primary-foreground transition-colors group-hover:bg-accent group-hover:text-accent-foreground"><Icon className="h-6 w-6" /></div><h3 className="font-display text-2xl text-primary">{item.title}</h3><p className="mt-2 leading-relaxed text-muted-foreground">{item.desc}</p></article>;
               })}
              </div>
-             <div className="reveal mx-auto mt-8 max-w-3xl border-t border-border pt-7 text-center">
-               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-accent">Języki obce do wyboru</p>
-               <p className="mt-3 font-display text-2xl text-primary">Angielski · Rosyjski · Niemiecki</p>
+              <div className="reveal mx-auto mt-8 max-w-3xl border-t border-border pt-7 text-center">
+                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-accent">Języki obce do wyboru</p>
+                <p className="mt-3 font-display text-2xl text-primary">Angielski · Rosyjski · Niemiecki</p>
+              </div>
+             <div className="mx-auto mt-12 grid max-w-4xl gap-5 md:grid-cols-2">
+              <article className="reveal flex flex-col items-center rounded-lg border border-border bg-card p-8 text-center"><h3 className="font-display text-2xl text-primary">Fundacja „Dla Polonii”</h3><p className="mt-3 max-w-md text-sm leading-relaxed text-muted-foreground">Fundacja prowadzi egzaminy certyfikatowe z języka polskiego na poziomie B1 i B2.</p><a href="https://www.fundacjadlapolonii.pl" target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex items-center justify-center gap-2 text-sm font-semibold text-accent hover:underline">Strona Fundacji<ArrowRight className="h-4 w-4" /></a></article>
+             <article className="reveal flex flex-col rounded-lg border border-border bg-card p-6 text-center"><div className="relative aspect-video overflow-hidden rounded-md bg-primary"><video src={donationVideo.url} className="absolute inset-0 h-full w-full object-contain" controls playsInline preload="metadata" /></div><h3 className="mt-5 font-display text-xl text-primary">Twoje 1,5% — mój powrót do Polski</h3><p className="mt-2 text-sm leading-relaxed text-muted-foreground">Przekaż 1,5% podatku uczniom Kolegium. Fundacja „Dla Polonii”, KRS: <span className="font-semibold text-primary">0000423252</span>.</p><a href="https://www.fundacjadlapolonii.pl" target="_blank" rel="noopener noreferrer" className="mt-auto inline-flex items-center justify-center gap-2 pt-5 text-sm font-semibold text-accent hover:underline">Strona Fundacji<ArrowRight className="h-4 w-4" /></a></article>
              </div>
-          </div>
-        </section>
+           </div>
+         </section>
 
         <section id="rozszerzenia" className="container-x scroll-mt-24 py-20 md:py-28">
           <SectionHeading centered eyebrow={copy.profiles.eyebrow} title={copy.profiles.title} lead={copy.profiles.lead} />
@@ -274,13 +278,6 @@ function HomePage() {
         </section>
 
         <InternatSection t={t} copy={copy} />
-
-        <section className="border-y border-border py-16">
-          <div className="container-x grid items-stretch gap-5 md:grid-cols-2">
-             <article className="reveal flex flex-col items-center justify-center rounded-lg border border-border bg-card p-8 text-center"><h3 className="font-display text-2xl text-primary">Fundacja „Dla Polonii”</h3><p className="mt-3 max-w-md text-sm leading-relaxed text-muted-foreground">Fundacja prowadzi egzaminy certyfikatowe z języka polskiego na poziomie B1 i B2.</p><a href="https://www.fundacjadlapolonii.pl" target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex items-center justify-center gap-2 text-sm font-semibold text-accent hover:underline">Strona Fundacji<ArrowRight className="h-4 w-4" /></a></article>
-            <article className="reveal flex flex-col rounded-lg border border-border bg-card p-6 text-center"><div className="relative aspect-video overflow-hidden rounded-md bg-primary"><video src={donationVideo.url} className="absolute inset-0 h-full w-full object-contain" controls playsInline preload="metadata" /></div><h3 className="mt-5 font-display text-xl text-primary">Twoje 1,5% — mój powrót do Polski</h3><p className="mt-2 text-sm leading-relaxed text-muted-foreground">Przekaż 1,5% podatku uczniom Kolegium. Fundacja „Dla Polonii”, KRS: <span className="font-semibold text-primary">0000423252</span>.</p><a href="https://www.fundacjadlapolonii.pl" target="_blank" rel="noopener noreferrer" className="mt-auto inline-flex items-center justify-center gap-2 pt-5 text-sm font-semibold text-accent hover:underline">Strona Fundacji<ArrowRight className="h-4 w-4" /></a></article>
-          </div>
-        </section>
 
         <section id="kontakt" className="scroll-mt-24 bg-secondary/55 py-20 md:py-28">
           <div className="container-x grid items-start gap-12 lg:grid-cols-2">
