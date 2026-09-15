@@ -215,8 +215,9 @@ function HomePage() {
           <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
             <div className="reveal relative">
               <img src={schoolStart.url} alt="Społeczność Liceum Polonijnego" className="aspect-[4/3] w-full rounded-lg object-cover shadow-xl lg:aspect-[4/5]" />
-              <div className="absolute bottom-4 right-4 max-w-[190px] rounded-lg bg-accent p-5 text-accent-foreground shadow-xl md:-bottom-6 md:-right-6">
-                <div className="font-display text-4xl">{t.about.statYearsValue}</div><div className="mt-1 text-sm font-medium">{t.about.statYearsLabel}</div>
+              <div className="absolute bottom-4 right-4 max-w-[200px] rounded-lg bg-accent p-5 text-accent-foreground shadow-xl md:-bottom-6 md:-right-6">
+                <div className="font-display text-4xl">{t.about.badgeNumber}</div>
+                <div className="mt-1 text-sm font-medium leading-tight">{t.about.badgeText}</div>
               </div>
             </div>
             <div>
