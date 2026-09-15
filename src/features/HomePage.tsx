@@ -225,7 +225,7 @@ function HomePage() {
                 <p className="reveal">{t.about.p1}</p><p className="reveal">{t.about.p2}</p><p className="reveal">{t.about.p4}</p>
               </div>
               <div className="reveal mt-9 grid grid-cols-2 gap-4 border-t border-border pt-8">
-                 <div><div className="font-display text-4xl text-primary">79%</div><div className="mt-1 text-sm text-muted-foreground">średni wynik matury z języka polskiego</div></div>
+                 <div><div className="font-display text-4xl text-primary">{t.about.statYearsValue}</div><div className="mt-1 text-sm text-muted-foreground">{t.about.statYearsLabel}</div></div>
                 <div><div className="font-display text-4xl text-primary">{t.about.statCountriesValue}</div><div className="mt-1 text-sm text-muted-foreground">{t.about.statCountriesLabel}</div></div>
               </div>
             </div>
@@ -303,7 +303,7 @@ function SectionHeading({ eyebrow, title, lead, centered = false, inverse = fals
 function AchievementsSection({ copy }: { copy: (typeof pageCopy)[Lang] }) {
   const achievementItems = [
     { title: achievements[0]?.title, description: achievements[0]?.description, image: srebrnaSzkola.url, alt: "Odznaka Srebrna Szkoła 2026 rankingu Perspektywy", detail: "Wyróżnienie potwierdza wysoki poziom nauczania i wyniki uczniów naszego liceum." },
-    { title: achievements[1]?.title, description: achievements[1]?.description, image: matura.url, alt: "Uczennica wyróżniona za wyniki w nauce", detail: "79% — średni wynik matury z języka polskiego." },
+    { title: achievements[1]?.title, description: achievements[1]?.description, image: matura.url, alt: "Uczennica wyróżniona za wyniki w nauce", detail: "Najwyższe wyniki w nauce doceniane prestiżowymi stypendiami." },
     { title: achievements[2]?.title, description: achievements[2]?.description, image: certificate.url, alt: "Certyfikat Aktywni w bezpieczeństwie", detail: "Szkoła wspiera odpowiedzialne relacje oraz przeciwdziała przemocy i cyberprzemocy." },
   ];
   return <section id="osiagniecia" className="scroll-mt-24 bg-secondary/55 py-20 md:py-28"><div className="container-x"><SectionHeading centered eyebrow={copy.achievements.eyebrow} title={copy.achievements.title} lead={copy.achievements.lead} /><div className="mx-auto mt-12 max-w-6xl space-y-6">{achievementItems.map((item, index) => <article key={item.title} className="reveal grid overflow-hidden rounded-lg border border-border bg-card lg:grid-cols-2"><div className={`flex min-h-72 items-center justify-center bg-background p-6 sm:min-h-96 sm:p-10 ${index % 2 === 1 ? "lg:order-2" : ""}`}><img src={item.image} alt={item.alt} loading="lazy" className="max-h-[430px] w-full object-contain" /></div><div className="flex flex-col items-center justify-center p-8 text-center sm:p-12"><p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">{String(index + 1).padStart(2, "0")}</p><h3 className="mt-3 font-display text-3xl text-primary sm:text-4xl">{item.title}</h3><p className="mt-4 max-w-md leading-relaxed text-muted-foreground">{item.description}</p><p className="mt-5 max-w-md border-t border-border pt-5 font-semibold text-primary">{item.detail}</p></div></article>)}</div><div className="mt-9 text-center"><Button asChild variant="outline" className="rounded-full"><a href="/archiwum">Zobacz osiągnięcia w szkolnym kalendarzu<ArrowRight /></a></Button></div></div></section>;
