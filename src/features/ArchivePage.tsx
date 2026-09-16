@@ -1,7 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
 import { ArrowLeft, ArrowUp, ChevronLeft, ChevronRight, Search, X } from "lucide-react";
 import { archiveItems, archiveCategories, type ArchiveItem } from "@/lib/archive-data";
-import { translations, type Lang } from "@/lib/site-i18n";
+import { translations, languageOptions, type Lang } from "@/lib/site-i18n";
+import { uiCopy } from "@/features/ui-copy";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -14,8 +15,13 @@ import {
 import logo from "@/assets/real/logo.png.asset.json";
 
 export default function ArchivePage() {
-  const [lang] = useState<Lang>("pl");
+  const [lang] = useState<Lang>(() => {
+    if (typeof window === "undefined") return "pl";
+    const saved = window.localStorage.getItem("site-lang");
+    return languageOptions.some((option) => option.code === saved) ? (saved as Lang) : "pl";
+  });
   const t = translations[lang];
+  const u = uiCopy[lang];
   const [filter, setFilter] = useState<ArchiveItem["category"] | "all">("all");
   const [query, setQuery] = useState("");
   const [year, setYear] = useState<string>("all");
@@ -125,7 +131,7 @@ export default function ArchivePage() {
             <Input
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Szukaj w archiwum…"
+              placeholder={u.archive.search}
               className="pl-9 pr-9 h-11"
             />
             {query && (
@@ -133,7 +139,7 @@ export default function ArchivePage() {
                 type="button"
                 onClick={() => setQuery("")}
                 className="absolute right-2 top-1/2 -translate-y-1/2 p-1 text-muted-foreground hover:text-foreground"
-                aria-label="Wyczyść"
+                aria-label={u.archive.clear}
               >
                 <X className="w-4 h-4" />
               </button>
@@ -141,10 +147,10 @@ export default function ArchivePage() {
           </div>
           <Select value={year} onValueChange={setYear}>
             <SelectTrigger className="h-11 sm:w-[140px]">
-              <SelectValue placeholder="Rok" />
+              <SelectValue placeholder={u.archive.yearPlaceholder} />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="all">Wszystkie lata</SelectItem>
+              <SelectItem value="all">{u.archive.allYears}</SelectItem>
               {years.map((y) => (
                 <SelectItem key={y} value={y}>
                   {y}
@@ -157,8 +163,8 @@ export default function ArchivePage() {
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="newest">Najnowsze</SelectItem>
-              <SelectItem value="oldest">Najstarsze</SelectItem>
+              <SelectItem value="newest">{u.archive.newest}</SelectItem>
+              <SelectItem value="oldest">{u.archive.oldest}</SelectItem>
             </SelectContent>
           </Select>
           <Button
@@ -168,29 +174,29 @@ export default function ArchivePage() {
             disabled={!hasActiveFilters}
             className="h-11 sm:w-[130px]"
           >
-            Wyczyść
+            {u.archive.clear}
           </Button>
         </div>
 
         <p className="mt-4 text-sm text-muted-foreground">
-          {items.length} {items.length === 1 ? "wynik" : "wyników"}
+          {items.length} {items.length === 1 ? u.archive.resultOne : u.archive.resultMany}
         </p>
 
         <div className="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {items.map((item) => (
-            <ArchiveCard key={`${item.category}-${item.id}`} item={item} />
+            <ArchiveCard key={`${item.category}-${item.id}`} item={item} u={u} />
           ))}
         </div>
 
         {items.length === 0 && (
-          <div className="mt-16 text-center text-muted-foreground">Brak wyników.</div>
+          <div className="mt-16 text-center text-muted-foreground">{u.archive.empty}</div>
         )}
       </section>
 
       <button
         type="button"
         onClick={scrollToTop}
-        aria-label="Wróć na górę"
+        aria-label={u.aria.scrollTop}
         className={`fixed bottom-6 right-6 z-50 inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent text-accent-foreground shadow-lg hover:bg-accent/90 transition-all duration-300 ${
           showScrollTop ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0 pointer-events-none"
         }`}
@@ -231,7 +237,7 @@ function FilterPill({
   );
 }
 
-function ArchiveCard({ item }: { item: ArchiveItem }) {
+function ArchiveCard({ item, u }: { item: ArchiveItem; u: (typeof uiCopy)[Lang] }) {
   const gallery = useMemo(() => {
     const raw = item.images && item.images.length > 0 ? item.images : item.image ? [item.image] : [];
     const seen = new Set<string>();
@@ -316,7 +322,7 @@ function ArchiveCard({ item }: { item: ArchiveItem }) {
             <button
               type="button"
               onClick={prev}
-              aria-label="Poprzednie zdjęcie"
+              aria-label={u.archive.prevPhoto}
               className="absolute left-2 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/45 hover:bg-black/65 text-white flex items-center justify-center backdrop-blur-sm transition-colors"
             >
               <ChevronLeft className="w-5 h-5" />
@@ -324,7 +330,7 @@ function ArchiveCard({ item }: { item: ArchiveItem }) {
             <button
               type="button"
               onClick={next}
-              aria-label="Następne zdjęcie"
+              aria-label={u.archive.nextPhoto}
               className="absolute right-2 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/45 hover:bg-black/65 text-white flex items-center justify-center backdrop-blur-sm transition-colors"
             >
               <ChevronRight className="w-5 h-5" />
