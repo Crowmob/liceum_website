@@ -192,9 +192,10 @@ function HomePage() {
 
       <main>
         <section id="top" className="relative flex h-[92svh] min-h-[760px] max-h-[1020px] items-center overflow-hidden pt-20">
-          <img src={heroImg.url} alt="Uczniowie Liceum Polonijnego w Warszawie" className="absolute inset-0 h-full w-full object-cover object-center kenburns" />
-          <div className="absolute inset-0 bg-primary/65" />
-          <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-primary/80 to-transparent" />
+          <img src={heroImg.url} alt="Uczniowie Liceum Polonijnego w Warszawie" className="absolute inset-0 hidden h-full w-full object-cover object-center kenburns sm:block" />
+          <div className="absolute inset-0 bg-gradient-to-b from-primary via-primary to-accent/40 sm:hidden" />
+          <div className="absolute inset-0 hidden bg-primary/65 sm:block" />
+          <div className="absolute inset-x-0 bottom-0 hidden h-2/3 bg-gradient-to-t from-primary/80 to-transparent sm:block" />
           <div className="container-x relative z-10 text-primary-foreground">
             <p className="reveal mb-5 text-xs font-semibold uppercase tracking-[0.25em] text-accent sm:text-sm">{t.hero.eyebrow}</p>
             <h1 className="reveal max-w-5xl font-display text-4xl leading-[1.06] sm:text-6xl lg:text-7xl xl:text-8xl">
