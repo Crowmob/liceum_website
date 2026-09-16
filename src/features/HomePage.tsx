@@ -145,8 +145,8 @@ function HomePage() {
     { id: "oferta", label: t.nav.offer },
     { id: "rozszerzenia", label: copy.nav.profiles },
     { id: "osiagniecia", label: copy.nav.achievements },
-    { id: "rekrutacja", label: t.nav.recruitment },
     { id: "internat", label: t.nav.dorm },
+    { id: "rekrutacja", label: t.nav.recruitment },
     { id: "kontakt", label: t.nav.contact },
   ], [copy, t]);
   const active = useActiveSection(navItems.map((item) => item.id));
