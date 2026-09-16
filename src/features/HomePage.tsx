@@ -268,6 +268,8 @@ function HomePage() {
 
         <AchievementsSection copy={copy} />
 
+        <InternatSection t={t} copy={copy} />
+
         <section id="rekrutacja" className="container-x scroll-mt-24 py-20 md:py-28">
           <SectionHeading centered eyebrow={t.rec.eyebrow} title="Dołącz do naszego liceum" lead={t.rec.lead} />
           <div className="mt-12 grid gap-5 lg:grid-cols-3">
@@ -280,8 +282,6 @@ function HomePage() {
             <div className="flex flex-col gap-3 sm:flex-row"><Button asChild size="lg" className="rounded-full bg-accent text-accent-foreground hover:bg-accent/90"><a href="mailto:rekrutacja.kolegium@gmail.com"><Mail />Napisz do nas</a></Button><Button asChild size="lg" variant="outline" className="rounded-full border-primary-foreground/40 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"><a href="tel:+48225592110"><Phone />22 559 21 10</a></Button></div>
           </div>
         </section>
-
-        <InternatSection t={t} copy={copy} />
 
         <section id="kontakt" className="scroll-mt-24 bg-secondary/55 py-20 md:py-28">
           <div className="container-x grid items-start gap-12 lg:grid-cols-2">
