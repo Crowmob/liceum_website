@@ -257,6 +257,7 @@ function ArchiveCard({ item, u }: { item: ArchiveItem; u: (typeof uiCopy)[Lang] 
   const [idx, setIdx] = useState(0);
   const [loadedMap, setLoadedMap] = useState<Record<string, boolean>>({});
   const [probed, setProbed] = useState(false);
+  const [contain, setContain] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
