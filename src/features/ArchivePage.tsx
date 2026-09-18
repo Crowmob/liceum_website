@@ -264,6 +264,7 @@ function ArchiveCard({ item, u }: { item: ArchiveItem; u: (typeof uiCopy)[Lang] 
     setProbed(false);
     setLoadedMap({});
     setIdx(0);
+    setContain(false);
     if (gallery.length === 0) {
       setProbed(true);
       return;
