@@ -295,10 +295,12 @@ function ArchiveCard({ item, u }: { item: ArchiveItem; u: (typeof uiCopy)[Lang] 
   const hasMultiple = probed && visible.length > 1;
   const prev = (e: React.MouseEvent) => {
     e.preventDefault();
+    setContain(false);
     setIdx((i) => (i - 1 + visible.length) % visible.length);
   };
   const next = (e: React.MouseEvent) => {
     e.preventDefault();
+    setContain(false);
     setIdx((i) => (i + 1) % visible.length);
   };
   return (
@@ -313,7 +315,14 @@ function ArchiveCard({ item, u }: { item: ArchiveItem; u: (typeof uiCopy)[Lang] 
             onError={() => {
               setLoadedMap((m) => ({ ...m, [current]: false }));
             }}
-            className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500"
+            onLoad={(e) => {
+              const img = e.currentTarget;
+              const ratio = img.naturalWidth / Math.max(img.naturalHeight, 1);
+              setContain(ratio > 1.7);
+            }}
+            className={`w-full h-full transition-transform duration-500 group-hover:scale-[1.03] ${
+              contain ? "object-contain" : "object-cover"
+            }`}
           />
         ) : (
           <div className="w-full h-full bg-gradient-to-br from-primary/20 to-accent/20" />
