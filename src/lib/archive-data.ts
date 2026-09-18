@@ -10,6 +10,20 @@ export type ArchiveItem = {
 
 export const archiveItems: ArchiveItem[] = [
 {
+    id: 7531,
+    title: "XXIV Ogólnopolskie Forum Młodzieży Szkół Katolickich",
+    excerpt:
+      "17 września uczniowie klas maturalnych 4A i 4B wzięli udział w XXIV Ogólnopolskim Forum Młodzieży Szkół Katolickich na Jasnej Górze, tegorocz pod hasłem „Rodzina – tu zaczyna się miłość”. Zwiedziliśmy Jasną Górę i wieżę widokową, uczestniczyliśmy w adoracji i Mszy Świętej, modląc się o dobry wynik matury i powierzając Matce Bożej nasze podziękowania i prośby. Maturzystom życzymy wytrwałości, spokoju i jak najlepszych wyników! 🎓",
+    image: "/media/jasnagora-2026-09/jasnagora-forum-1.jpg",
+    images: [
+      "/media/jasnagora-2026-09/jasnagora-forum-1.jpg",
+      "/media/jasnagora-2026-09/jasnagora-forum-2.jpg",
+      "/media/jasnagora-2026-09/jasnagora-forum-3.jpg",
+    ],
+    date: "2026-09-17",
+    category: "Z życia szkoły",
+  },
+{
     id: 7530,
     title: "Klasa 2B na wycieczce po Warszawie",
     excerpt:
