@@ -305,9 +305,25 @@ function ArchiveCard({ item, u }: { item: ArchiveItem; u: (typeof uiCopy)[Lang] 
     setContain(false);
     setIdx((i) => (i + 1) % visible.length);
   };
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const openLightbox = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (visible.length === 0) return;
+    setIdx((i) => Math.min(i, Math.max(visible.length - 1, 0)));
+    setLightboxOpen(true);
+  };
   return (
     <article className="group block rounded-2xl overflow-hidden border border-border bg-card hover:border-accent/60 hover:shadow-xl transition-all">
-      <div className="relative aspect-[4/3] overflow-hidden bg-secondary">
+      <div
+        className="relative aspect-[4/3] overflow-hidden bg-secondary cursor-zoom-in"
+        onClick={openLightbox}
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") openLightbox(e as unknown as React.MouseEvent);
+        }}
+        aria-label={item.title}
+      >
         {current ? (
           <img
             key={current}
