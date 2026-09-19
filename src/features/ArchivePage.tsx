@@ -305,9 +305,25 @@ function ArchiveCard({ item, u }: { item: ArchiveItem; u: (typeof uiCopy)[Lang] 
     setContain(false);
     setIdx((i) => (i + 1) % visible.length);
   };
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const openLightbox = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (visible.length === 0) return;
+    setIdx((i) => Math.min(i, Math.max(visible.length - 1, 0)));
+    setLightboxOpen(true);
+  };
   return (
     <article className="group block rounded-2xl overflow-hidden border border-border bg-card hover:border-accent/60 hover:shadow-xl transition-all">
-      <div className="relative aspect-[4/3] overflow-hidden bg-secondary">
+      <div
+        className="relative aspect-[4/3] overflow-hidden bg-secondary cursor-zoom-in"
+        onClick={openLightbox}
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") openLightbox(e as unknown as React.MouseEvent);
+        }}
+        aria-label={item.title}
+      >
         {current ? (
           <img
             key={current}
@@ -333,7 +349,10 @@ function ArchiveCard({ item, u }: { item: ArchiveItem; u: (typeof uiCopy)[Lang] 
           <>
             <button
               type="button"
-              onClick={prev}
+              onClick={(e) => {
+                e.stopPropagation();
+                prev(e);
+              }}
               aria-label={u.archive.prevPhoto}
               className="absolute left-2 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/45 hover:bg-black/65 text-white flex items-center justify-center backdrop-blur-sm transition-colors"
             >
@@ -341,7 +360,10 @@ function ArchiveCard({ item, u }: { item: ArchiveItem; u: (typeof uiCopy)[Lang] 
             </button>
             <button
               type="button"
-              onClick={next}
+              onClick={(e) => {
+                e.stopPropagation();
+                next(e);
+              }}
               aria-label={u.archive.nextPhoto}
               className="absolute right-2 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/45 hover:bg-black/65 text-white flex items-center justify-center backdrop-blur-sm transition-colors"
             >
@@ -365,6 +387,112 @@ function ArchiveCard({ item, u }: { item: ArchiveItem; u: (typeof uiCopy)[Lang] 
           </p>
         )}
       </div>
+      {lightboxOpen && current && (
+        <Lightbox
+          images={visible}
+          index={Math.min(idx, Math.max(visible.length - 1, 0))}
+          onIndexChange={setIdx}
+          onClose={() => setLightboxOpen(false)}
+          prevLabel={u.archive.prevPhoto}
+          nextLabel={u.archive.nextPhoto}
+          closeLabel={u.archive.clear}
+        />
+      )}
     </article>
+  );
+}
+
+function Lightbox({
+  images,
+  index,
+  onIndexChange,
+  onClose,
+  prevLabel,
+  nextLabel,
+  closeLabel,
+}: {
+  images: string[];
+  index: number;
+  onIndexChange: (i: number) => void;
+  onClose: () => void;
+  prevLabel: string;
+  nextLabel: string;
+  closeLabel: string;
+}) {
+  const count = images.length;
+  const goPrev = () => onIndexChange((index - 1 + count) % count);
+  const goNext = () => onIndexChange((index + 1) % count);
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+      else if (e.key === "ArrowLeft" && count > 1) goPrev();
+      else if (e.key === "ArrowRight" && count > 1) goNext();
+    };
+    document.addEventListener("keydown", onKey);
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prevOverflow;
+    };
+  });
+
+  if (typeof document === "undefined") return null;
+  return createPortal(
+    <div
+      className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-sm flex items-center justify-center"
+      onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+    >
+      <button
+        type="button"
+        onClick={onClose}
+        aria-label={closeLabel}
+        className="absolute top-4 right-4 z-10 w-11 h-11 rounded-full bg-white/10 hover:bg-white/25 text-white flex items-center justify-center transition-colors"
+      >
+        <X className="w-5 h-5" />
+      </button>
+      {count > 1 && (
+        <>
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              goPrev();
+            }}
+            aria-label={prevLabel}
+            className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-white/10 hover:bg-white/25 text-white flex items-center justify-center transition-colors"
+          >
+            <ChevronLeft className="w-6 h-6" />
+          </button>
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              goNext();
+            }}
+            aria-label={nextLabel}
+            className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-white/10 hover:bg-white/25 text-white flex items-center justify-center transition-colors"
+          >
+            <ChevronRight className="w-6 h-6" />
+          </button>
+        </>
+      )}
+      <img
+        key={images[index]}
+        src={images[index]}
+        alt=""
+        onClick={(e) => e.stopPropagation()}
+        className="max-w-[92vw] max-h-[86vh] object-contain select-none"
+      />
+      {count > 1 && (
+        <div className="absolute bottom-5 left-1/2 -translate-x-1/2 rounded-full bg-white/10 text-white text-sm px-4 py-1.5">
+          {index + 1} / {count}
+        </div>
+      )}
+    </div>,
+    document.body
   );
 }
