@@ -349,7 +349,10 @@ function ArchiveCard({ item, u }: { item: ArchiveItem; u: (typeof uiCopy)[Lang] 
           <>
             <button
               type="button"
-              onClick={prev}
+              onClick={(e) => {
+                e.stopPropagation();
+                prev(e);
+              }}
               aria-label={u.archive.prevPhoto}
               className="absolute left-2 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/45 hover:bg-black/65 text-white flex items-center justify-center backdrop-blur-sm transition-colors"
             >
@@ -357,7 +360,10 @@ function ArchiveCard({ item, u }: { item: ArchiveItem; u: (typeof uiCopy)[Lang] 
             </button>
             <button
               type="button"
-              onClick={next}
+              onClick={(e) => {
+                e.stopPropagation();
+                next(e);
+              }}
               aria-label={u.archive.nextPhoto}
               className="absolute right-2 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/45 hover:bg-black/65 text-white flex items-center justify-center backdrop-blur-sm transition-colors"
             >
