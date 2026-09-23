@@ -258,14 +258,12 @@ function ArchiveCard({ item, u }: { item: ArchiveItem; u: (typeof uiCopy)[Lang] 
   const [idx, setIdx] = useState(0);
   const [loadedMap, setLoadedMap] = useState<Record<string, boolean>>({});
   const [probed, setProbed] = useState(false);
-  const [contain, setContain] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
     setProbed(false);
     setLoadedMap({});
     setIdx(0);
-    setContain(false);
     if (gallery.length === 0) {
       setProbed(true);
       return;
@@ -297,12 +295,10 @@ function ArchiveCard({ item, u }: { item: ArchiveItem; u: (typeof uiCopy)[Lang] 
   const hasMultiple = probed && visible.length > 1;
   const prev = (e: React.MouseEvent) => {
     e.preventDefault();
-    setContain(false);
     setIdx((i) => (i - 1 + visible.length) % visible.length);
   };
   const next = (e: React.MouseEvent) => {
     e.preventDefault();
-    setContain(false);
     setIdx((i) => (i + 1) % visible.length);
   };
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -333,14 +329,7 @@ function ArchiveCard({ item, u }: { item: ArchiveItem; u: (typeof uiCopy)[Lang] 
             onError={() => {
               setLoadedMap((m) => ({ ...m, [current]: false }));
             }}
-            onLoad={(e) => {
-              const img = e.currentTarget;
-              const ratio = img.naturalWidth / Math.max(img.naturalHeight, 1);
-              setContain(ratio > 1.7);
-            }}
-            className={`w-full h-full transition-transform duration-500 group-hover:scale-[1.03] ${
-              contain ? "object-contain" : "object-cover"
-            }`}
+            className="w-full h-full object-contain"
           />
         ) : (
           <div className="w-full h-full bg-gradient-to-br from-primary/20 to-accent/20" />
