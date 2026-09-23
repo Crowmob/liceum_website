@@ -333,14 +333,7 @@ function ArchiveCard({ item, u }: { item: ArchiveItem; u: (typeof uiCopy)[Lang] 
             onError={() => {
               setLoadedMap((m) => ({ ...m, [current]: false }));
             }}
-            onLoad={(e) => {
-              const img = e.currentTarget;
-              const ratio = img.naturalWidth / Math.max(img.naturalHeight, 1);
-              setContain(ratio > 1.7);
-            }}
-            className={`w-full h-full transition-transform duration-500 group-hover:scale-[1.03] ${
-              contain ? "object-contain" : "object-cover"
-            }`}
+            className="w-full h-full object-contain"
           />
         ) : (
           <div className="w-full h-full bg-gradient-to-br from-primary/20 to-accent/20" />
