@@ -10,6 +10,24 @@ export type ArchiveItem = {
 
 export const archiveItems: ArchiveItem[] = [
 {
+    id: 7532,
+    title: "Klasy 2 i 3 na spacerze po warszawskim Starym Mieście",
+    excerpt:
+      "12 września uczniowie klas 2 i 3 odbyli edukacyjny spacer po warszawskim Starym Mieście. Zobaczyliśmy Plac Zamkowy i historyczne uliczki, poznaliśmy pomniki polskich postaci, m.in. Aleksandra Głowackiego i Adama Mickiewicza, a szczególną uwagę przyciągnęły Barbakan Warszawski oraz Wieczny Ogień. To doskonała okazja, by wspólnie spędzić czas i lepiej poznać historię stolicy.",
+    image: "/media/warszawa-stare-miasto-2026-09/stare-miasto-1.jpg",
+    images: [
+      "/media/warszawa-stare-miasto-2026-09/stare-miasto-1.jpg",
+      "/media/warszawa-stare-miasto-2026-09/stare-miasto-2.jpg",
+      "/media/warszawa-stare-miasto-2026-09/stare-miasto-3.jpg",
+      "/media/warszawa-stare-miasto-2026-09/stare-miasto-4.jpg",
+      "/media/warszawa-stare-miasto-2026-09/stare-miasto-5.jpg",
+      "/media/warszawa-stare-miasto-2026-09/stare-miasto-6.jpg",
+      "/media/warszawa-stare-miasto-2026-09/stare-miasto-7.jpg",
+    ],
+    date: "2026-09-12",
+    category: "Z życia szkoły",
+  },
+{
     id: 7531,
     title: "XXIV Ogólnopolskie Forum Młodzieży Szkół Katolickich",
     excerpt:
