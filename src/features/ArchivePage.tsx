@@ -258,14 +258,12 @@ function ArchiveCard({ item, u }: { item: ArchiveItem; u: (typeof uiCopy)[Lang] 
   const [idx, setIdx] = useState(0);
   const [loadedMap, setLoadedMap] = useState<Record<string, boolean>>({});
   const [probed, setProbed] = useState(false);
-  const [contain, setContain] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
     setProbed(false);
     setLoadedMap({});
     setIdx(0);
-    setContain(false);
     if (gallery.length === 0) {
       setProbed(true);
       return;
@@ -297,12 +295,10 @@ function ArchiveCard({ item, u }: { item: ArchiveItem; u: (typeof uiCopy)[Lang] 
   const hasMultiple = probed && visible.length > 1;
   const prev = (e: React.MouseEvent) => {
     e.preventDefault();
-    setContain(false);
     setIdx((i) => (i - 1 + visible.length) % visible.length);
   };
   const next = (e: React.MouseEvent) => {
     e.preventDefault();
-    setContain(false);
     setIdx((i) => (i + 1) % visible.length);
   };
   const [lightboxOpen, setLightboxOpen] = useState(false);
