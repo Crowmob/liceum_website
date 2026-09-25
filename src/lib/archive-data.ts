@@ -13,7 +13,7 @@ export const archiveItems: ArchiveItem[] = [
     id: 7533,
     title: "Refleksja ucznia: dlaczego Jasna Góra jest tak ważna",
     excerpt:
-      "Wycieczka na Jasną Górę miała dla mnie duże znaczenie. To miejsce o ważnym wymiarze religijnym — znajduje się tu cudowny Obraz Matki Bożej Częstochowskiej, zwany Czarną Madonną, mający ogromne znaczenie dla katolików. Ma też wymiar historyczno-kulturowy: to klasztor, którego bronił Andrzej Kmicic w „Potopie" Sienkiewicza. Uważam, że każdy wierzący i każdy, kto interesuje się polską kulturą, powinien choć raz tam dotrzeć.",
+      "Wycieczka na Jasną Górę miała dla mnie duże znaczenie. To miejsce o ważnym wymiarze religijnym — znajduje się tu cudowny Obraz Matki Bożej Częstochowskiej, zwany Czarną Madonną, mający ogromne znaczenie dla katolików. Ma też wymiar historyczno-kulturowy: to klasztor, którego bronił Andrzej Kmicic w „Potopie” Sienkiewicza. Uważam, że każdy wierzący i każdy, kto interesuje się polską kulturą, powinien choć raz tam dotrzeć.",
     image: "/media/jasnagora-refleksja-2026-09/jasnagora-refleksja-1.jpg",
     images: [
       "/media/jasnagora-refleksja-2026-09/jasnagora-refleksja-1.jpg",
