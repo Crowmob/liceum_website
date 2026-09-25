@@ -376,8 +376,8 @@ function ArchiveCard({ item, u }: { item: ArchiveItem; u: (typeof uiCopy)[Lang] 
           </p>
         )}
         {item.author && (
-          <p className="mt-3 text-sm text-muted-foreground/80 italic">
-            — autor tekstu: {item.author}
+          <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+            {item.author}
           </p>
         )}
       </div>
