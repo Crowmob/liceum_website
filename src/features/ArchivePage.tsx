@@ -375,6 +375,11 @@ function ArchiveCard({ item, u }: { item: ArchiveItem; u: (typeof uiCopy)[Lang] 
             {item.excerpt}
           </p>
         )}
+        {item.author && (
+          <p className="mt-3 text-sm text-muted-foreground/80 italic">
+            — autor tekstu: {item.author}
+          </p>
+        )}
       </div>
       {lightboxOpen && current && (
         <Lightbox
