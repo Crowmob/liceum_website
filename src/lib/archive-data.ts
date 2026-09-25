@@ -6,6 +6,7 @@ export type ArchiveItem = {
   images: string[];
   date: string;
   category: "Z życia szkoły" | "Media o nas";
+  author?: string;
 };
 
 export const archiveItems: ArchiveItem[] = [
@@ -21,6 +22,7 @@ export const archiveItems: ArchiveItem[] = [
     ],
     date: "2026-09-24",
     category: "Z życia szkoły",
+    author: "Edgar Mishelevich",
   },
 {
     id: 7532,
