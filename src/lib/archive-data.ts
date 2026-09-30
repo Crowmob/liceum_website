@@ -11,6 +11,21 @@ export type ArchiveItem = {
 
 export const archiveItems: ArchiveItem[] = [
 {
+    id: 7534,
+    title: "Maturzyści na „Sali Maturzystów” w SGH",
+    excerpt:
+      "29 września uczniowie klas 4A i 4B wzięli udział w wydarzeniu „Sala Maturzystów” w Szkole Głównej Handlowej w Warszawie. Zdobyliśmy wiele przydatnych informacji o maturze, rekrutacji na studia i ofercie polskich uczelni, a także rozmawialiśmy z ich przedstawicielami. To cenne doświadczenie i pomoc w planowaniu dalszej drogi edukacyjnej.",
+    image: "/media/sala-maturzystow-2026-09/sala-maturzystow-1.jpg",
+    images: [
+      "/media/sala-maturzystow-2026-09/sala-maturzystow-1.jpg",
+      "/media/sala-maturzystow-2026-09/sala-maturzystow-2.jpg",
+      "/media/sala-maturzystow-2026-09/sala-maturzystow-4.jpg",
+      "/media/sala-maturzystow-2026-09/sala-maturzystow-3.jpg",
+    ],
+    date: "2026-09-29",
+    category: "Z życia szkoły",
+  },
+{
     id: 7533,
     title: "Refleksja ucznia: dlaczego Jasna Góra jest tak ważna",
     excerpt:
