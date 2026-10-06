@@ -290,7 +290,7 @@ function HomePage() {
           </div>
           <div className="reveal mt-12 flex flex-col items-start justify-between gap-7 rounded-lg bg-primary p-8 text-primary-foreground md:flex-row md:items-center md:p-11">
             <div><h3 className="font-display text-3xl">{t.rec.ctaTitle}</h3><p className="mt-3 max-w-xl text-primary-foreground/80">{t.rec.ctaLead}</p></div>
-            <div className="flex flex-col gap-3 sm:flex-row"><Button asChild size="lg" className="rounded-full bg-accent text-accent-foreground hover:bg-accent/90"><a href="mailto:rekrutacja.kolegium@gmail.com"><Mail />{u.recWrite}</a></Button><Button asChild size="lg" variant="outline" className="rounded-full border-primary-foreground/40 bg-transparent text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"><a href="tel:+48225592110"><Phone />22 559 21 10</a></Button></div>
+            <div className="flex flex-col gap-3 sm:flex-row"><Button asChild size="lg" className="rounded-full bg-accent text-accent-foreground hover:bg-accent/90"><a href="tel:+48225592110"><Phone />22 559 21 10</a></Button></div>
           </div>
         </section>
 
