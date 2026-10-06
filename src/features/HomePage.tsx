@@ -296,7 +296,7 @@ function HomePage() {
 
         <section id="kontakt" className="scroll-mt-24 bg-secondary/55 py-20 md:py-28">
           <div className="container-x grid items-start gap-12 lg:grid-cols-2">
-            <div><SectionHeading eyebrow={t.contact.eyebrow} title={t.contact.title} lead={t.contact.lead} /><div className="reveal mt-9 space-y-5"><ContactLine icon={MapPin} label={t.contact.addressLabel}>{t.contact.address}</ContactLine><ContactLine icon={Phone} label={t.contact.phoneLabel}><a href="tel:+48225592110" className="hover:text-accent">22 559 21 10</a></ContactLine><ContactLine icon={Mail} label={t.contact.emailLabel}><a href="mailto:sekretariat@liceumpolonijne.edu.pl" className="break-all hover:text-accent">sekretariat@liceumpolonijne.edu.pl</a></ContactLine></div></div>
+            <div><SectionHeading eyebrow={t.contact.eyebrow} title={t.contact.title} lead={t.contact.lead} /><div className="reveal mt-9 space-y-5"><ContactLine icon={MapPin} label={t.contact.addressLabel}>{t.contact.address}</ContactLine><ContactLine icon={Phone} label={t.contact.phoneLabel}><a href="tel:+48225592110" className="hover:text-accent">22 559 21 10</a></ContactLine><ContactLine icon={Mail} label={t.contact.emailLabel}><a href="https://mail.google.com/mail/?view=cm&to=sekretariat@liceumpolonijne.edu.pl" target="_blank" rel="noopener noreferrer" className="break-all hover:text-accent">sekretariat@liceumpolonijne.edu.pl</a></ContactLine></div></div>
             <div className="reveal h-[420px] overflow-hidden rounded-lg border border-border shadow-lg"><iframe title={u.aria.map} src="https://www.google.com/maps?q=ul.+Bobrowiecka+9,+Warszawa&output=embed" className="h-full w-full border-0" loading="lazy" /></div>
           </div>
         </section>
