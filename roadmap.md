@@ -20,3 +20,4 @@
 - [x] Move language choices into Rozszerzenia
 - [x] Redesign achievements with coherent, uncropped media
 - [x] Verify desktop and mobile presentation
+- [x] Add archive entry: Dzień Patrona Świętego Stanisława Kostki (2026-09-25, five photos in order 1 5 3 2 4)
