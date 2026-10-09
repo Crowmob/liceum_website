@@ -26,6 +26,22 @@ export const archiveItems: ArchiveItem[] = [
     category: "Z życia szkoły",
   },
 {
+    id: 7535,
+    title: "Dzień Patrona Świętego Stanisława Kostki",
+    excerpt:
+      "25 września w Liceum Świętego Stanisława Kostki odbył się Dzień Patrona. Uczniowie szkoły podstawowej zaprezentowali przedstawienie o naszym patronie, a chór starszych klas dynamicznie wykonał swoje utwory. Tego dnia odbyło się ślubowanie nowych uczniów, którzy złożyli przysięgę i otrzymali firmowe krawaty. Każda klasa przygotowała plakat symbolizujący jej klasę i naukę, a uczniowie zapisali swoje życzenia na następny rok na ścianie z instalacjami. Na zakończenie wręczono nagrody zwycięzcom konkursu na najlepszy film i poczęstowano wszystkich cukierkami. To był ciekawy i wesoły dzień, który pozwolił nam poczuć się częścią wielkiej szkolnej rodziny.",
+    image: "/media/dzien-patrona-2026-09/dzien-patrona-1.jpg",
+    images: [
+      "/media/dzien-patrona-2026-09/dzien-patrona-1.jpg",
+      "/media/dzien-patrona-2026-09/dzien-patrona-2.jpg",
+      "/media/dzien-patrona-2026-09/dzien-patrona-3.jpg",
+      "/media/dzien-patrona-2026-09/dzien-patrona-4.jpg",
+      "/media/dzien-patrona-2026-09/dzien-patrona-5.jpg",
+    ],
+    date: "2026-09-25",
+    category: "Z życia szkoły",
+  },
+{
     id: 7533,
     title: "Refleksja ucznia: dlaczego Jasna Góra jest tak ważna",
     excerpt:
